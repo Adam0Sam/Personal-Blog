@@ -100,7 +100,7 @@ main {
   display: flex;
 }
 .container {
-  max-width: 250px;
+  width: 250px;
   height: auto;
   border-right: var(--container-border);
   padding: 0 15px;
@@ -127,12 +127,16 @@ main {
   text-align: justify;
   color: var(--text-color);
   font-size: 10px;
-  font-weight: 400;
-  text-overflow: ellipsis;
+  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+
 }
 
 footer {
-  margin-left: 8%;
+  margin: 0 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;

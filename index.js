@@ -62,16 +62,14 @@ const loadDynamicHeight = () => {
     const maxHeight = container.clientHeight;
     if(container.children.length>1){
       const children = container.childNodes;
-      const randomHeight = generateRandomHeight(0.3,0.6,maxHeight);
+      const randomHeight = generateRandomHeight(0.35,0.6,maxHeight);
       children[0].style.height = `${randomHeight}px`;
       children[1].style.height = `${maxHeight-randomHeight}px`
-      console.log(children);
     }
     else{
       const onlyChild = container.firstElementChild;
       const randomHeight = generateRandomHeight(0.7, 0.9, maxHeight);
-      onlyChild.style.height  = `${randomHeight}`;
-      console.log(onlyChild);
+      onlyChild.style.height  = `${randomHeight}px`;
     }
   });
 };
