@@ -91,7 +91,7 @@ header {
   box-shadow: var(--dark-indicator-box-shadow);
 }
 
-main {
+#landingpage-container{
   width: auto;
   height: 60vh;
   overflow-x: auto;
@@ -100,15 +100,15 @@ main {
   display: flex;
 }
 .container {
-  width: 250px;
+  min-width: 225px;
+  max-width: 250px;
   height: auto;
   border-right: var(--container-border);
   padding: 0 15px;
 }
 .wrapper {
-  box-sizing:border-box;
+  box-sizing: border-box;
   display: flex;
-  flex-grow: 0;
   flex-direction: column;
   justify-content: space-around;
   padding-top: 5px;
@@ -116,27 +116,44 @@ main {
   border-bottom: var(--container-border);
   cursor: pointer;
 }
+.wrapper:hover,.wrapper:focus{
+  transform: scale(1.02);
+}
 .header {
   text-align: justify;
   color: var(--text-color);
   font-family: "Times New Roman", Times, serif;
   font-size: 30px;
   font-weight: 700;
+  line-height: 2.5ch;
 }
 .subheader {
   text-align: justify;
   color: var(--text-color);
   font-size: 10px;
-  
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+}
+.wrapper.big .subheader{
+  -webkit-line-clamp: 6;
+}
 
+.activity{
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 600;
+}
+.date{
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 400;
 }
 
 footer {
-  margin: 0 8%;
+  margin: 0 8% 15px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,3 +181,32 @@ footer {
 #mail:hover {
   text-decoration: underline;
 }
+
+#blog-container{
+  overflow: auto;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 40px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+#blog-title{
+  text-align: center;
+  color: var(--text-color);
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+#blog-details{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#blog-content{
+  color: var(--text-color);
+  text-align: justify;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
