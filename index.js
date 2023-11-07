@@ -23,13 +23,38 @@ scheme.addEventListener("click", () => {
   nextBlog.classList.toggle("dark-scheme");
 });
 
-loadBlogPost = (post) => {
-  clear(main);
+const slideIn = (container) => {
+  main.appendChild(container);
+  setTimeout(() => {
+    container.classList.add("center");
+    // scroll to top
+    window.scrollTo(0, 0);
+  }, 1);
+};
+
+loadBlogPost = (post, requestedFrom) => {
+  const nextContainer = createBlogPost(post);
   nextBlog.classList.add("active");
-  // quick fix solution to add a new class to header. not permanent
-  document.querySelector("header").classList.add("blog");
-  main.innerHTML = `
-  <div id="blog-container" data-id="${post.id}">
+
+  if (requestedFrom == "nextBlog") {
+    const previousContainer = document.querySelector("#blog-container");
+    previousContainer.classList.add("move-left");
+    slideIn(nextContainer);
+
+    previousContainer.addEventListener("transitionend", () => {
+      main.removeChild(previousContainer);
+    });
+  } else {
+    clear(main);
+    slideIn(nextContainer);
+  }
+};
+
+createBlogPost = (post) => {
+  const blogContainer = document.createElement("div");
+  blogContainer.setAttribute("id", "blog-container");
+  blogContainer.dataset.id = post.id;
+  blogContainer.innerHTML = `
   <h2 id="blog-title">${post.title}</h2>
   <div id="blog-details">
   <p class="activity">${post.activity}</p>
@@ -41,8 +66,10 @@ loadBlogPost = (post) => {
   </div>
   </div>
   `;
+  return blogContainer;
 };
-// loadType tells the function if the load request came from the landing page or nextBlog btn
+
+// requestedFrom tells the function if the load request came from the landing page or nextBlog btn
 const fetchBlogPost = (id, requestedFrom = "landingPage") => {
   if (fileNames[id] == undefined) {
     console.log("undefined");
@@ -52,7 +79,7 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
 
   fetch(fileNames[id])
     .then((response) => response.json())
-    .then((result) => loadBlogPost(result));
+    .then((result) => loadBlogPost(result, requestedFrom));
   console.log(id);
 };
 
