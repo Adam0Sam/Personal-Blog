@@ -2,6 +2,8 @@ const body = document.querySelector("body");
 const scheme = document.getElementById("scheme");
 const nextBlog = document.getElementById("next-blog");
 const pageTitle = document.getElementById("title");
+// variable meant to check if blog sliding is occuring
+let isTransitioning = true;
 const fileNames = [
   "./test-jsons/ate.json",
   "./test-jsons/labas.json",
@@ -35,7 +37,7 @@ const slideIn = (container) => {
 loadBlogPost = (post, requestedFrom) => {
   const nextContainer = createBlogPost(post);
   nextBlog.classList.add("active");
-
+  isTransitioning=true;
   if (requestedFrom == "nextBlog") {
     const previousContainer = document.querySelector("#blog-container");
     previousContainer.classList.add("move-left");
@@ -48,6 +50,10 @@ loadBlogPost = (post, requestedFrom) => {
     clear(main);
     slideIn(nextContainer);
   }
+  nextContainer.addEventListener("transitionend", () => {
+    isTransitioning = false;
+  });
+  return;
 };
 
 createBlogPost = (post) => {
@@ -85,8 +91,10 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
 
 // create functioning "next blog" button
 nextBlog.addEventListener("click", () => {
-  const currentId = document.querySelector("#blog-container").dataset.id;
-  fetchBlogPost(+currentId + 1, "nextBlog");
+  if (!isTransitioning) {
+    const currentId = document.querySelector("#blog-container").dataset.id;
+    fetchBlogPost(+currentId + 1, "nextBlog");
+  }
 });
 
 const main = document.querySelector("main");
