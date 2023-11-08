@@ -37,8 +37,8 @@ const slideIn = (container) => {
 loadBlogPost = (post, requestedFrom) => {
   const nextContainer = createBlogPost(post);
   nextBlog.classList.add("active");
-  isTransitioning=true;
   if (requestedFrom == "nextBlog") {
+    isTransitioning = true;
     const previousContainer = document.querySelector("#blog-container");
     previousContainer.classList.add("move-left");
     slideIn(nextContainer);
@@ -46,13 +46,14 @@ loadBlogPost = (post, requestedFrom) => {
     previousContainer.addEventListener("transitionend", () => {
       main.removeChild(previousContainer);
     });
+    nextContainer.addEventListener("transitionend", () => {
+      isTransitioning = false;
+    });
   } else {
     clear(main);
     slideIn(nextContainer);
   }
-  nextContainer.addEventListener("transitionend", () => {
-    isTransitioning = false;
-  });
+
   return;
 };
 
@@ -113,6 +114,7 @@ const appendLangingPost = (post, container) => {
   const wrapper = document.createElement("div");
   wrapper.classList.add(`wrapper`);
   wrapper.classList.add(`${post.type}`);
+  container.classList.add(`${post.type}`);
   wrapper.dataset.id = `${post.id}`;
   wrapper.dataset.type = post.type;
   wrapper.addEventListener("click", () => fetchBlogPost(+wrapper.dataset.id));
@@ -172,7 +174,7 @@ const loadDynamicHeight = () => {
       children[1].style.height = `${maxHeight - randomHeight}px`;
     } else {
       const onlyChild = container.firstElementChild;
-      const randomHeight = generateRandomHeight(0.7, 0.9, maxHeight);
+      const randomHeight = generateRandomHeight(0.8, 1, maxHeight);
       onlyChild.style.height = `${randomHeight}px`;
     }
   });
@@ -181,6 +183,7 @@ const loadDynamicHeight = () => {
 const loadLangingPage = () => {
   initializeLandingPage();
   nextBlog.classList.remove("active");
+  isTransitioning = false;
   // wrap all filenames into a promise array
   Promise.all(
     fileNames.map((fileName) =>
