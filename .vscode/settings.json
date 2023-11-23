@@ -1,7 +1,15 @@
 {
+  // enable globally (here: format on save)
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript"],
+  // enable per-language (here: Prettier as formatter)
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": [
+    "javascript"
+  ],
   "liveServer.settings.port": 5501
 }

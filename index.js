@@ -1,20 +1,27 @@
+/* eslint-disable no-console */
 const body = document.querySelector("body");
 const scheme = document.getElementById("scheme");
 const nextBlog = document.getElementById("next-blog");
 const pageTitle = document.getElementById("title");
+const main = document.querySelector("main");
 // variable meant to check if blog sliding is occuring
 let isTransitioning = true;
 const fileNames = [
-  "./test-jsons/ate.json",
-  "./test-jsons/labas.json",
-  "./test-jsons/big.json",
+  "./blogs/9-2-c.json",
+  "./blogs/9-2-a.json",
+  "./blogs/9-3-c.json",
+  "./blogs/9-3-s.json",
+  "./blogs/9-4-s.json",
 ];
 
+const clear = (element) => {
+  while (element.lastChild) {
+    element.lastChild.remove();
+  }
+};
+
 // if preferred color scheme is dark (light scheme is enabled by defaul via css)
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
+if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
   body.classList.add("dark-scheme");
   scheme.classList.add("dark-scheme");
   nextBlog.classList.add("dark-scheme");
@@ -34,10 +41,29 @@ const slideIn = (container) => {
   }, 1);
 };
 
-loadBlogPost = (post, requestedFrom) => {
+const createBlogPost = (post) => {
+  const blogContainer = document.createElement("div");
+  blogContainer.setAttribute("id", "blog-container");
+  blogContainer.dataset.id = post.id;
+  blogContainer.innerHTML = `
+  <h2 id="blog-title">${post.title}</h2>
+  <div id="blog-details">
+  <p class="activity blog">${post.activity}</p>
+  <p class="date blog">${post.date}</p>
+  </div>
+  <div id="blog-content-container">
+  <p id="blog-content">${post.content}</p>
+  </div>
+  </div>
+  </div>
+  `;
+  return blogContainer;
+};
+
+const loadBlogPost = (post, requestedFrom) => {
   const nextContainer = createBlogPost(post);
   nextBlog.classList.add("active");
-  if (requestedFrom == "nextBlog") {
+  if (requestedFrom === "nextBlog") {
     isTransitioning = true;
     const previousContainer = document.querySelector("#blog-container");
     previousContainer.classList.add("move-left");
@@ -53,35 +79,15 @@ loadBlogPost = (post, requestedFrom) => {
     clear(main);
     slideIn(nextContainer);
   }
-
-  return;
-};
-
-createBlogPost = (post) => {
-  const blogContainer = document.createElement("div");
-  blogContainer.setAttribute("id", "blog-container");
-  blogContainer.dataset.id = post.id;
-  blogContainer.innerHTML = `
-  <h2 id="blog-title">${post.title}</h2>
-  <div id="blog-details">
-  <p class="activity">${post.activity}</p>
-  <p class="date">${post.date}</p>
-  </div>
-  <div id="blog-content-container">
-  <p id="blog-content">${post.content}</p>
-  </div>
-  </div>
-  </div>
-  `;
-  return blogContainer;
 };
 
 // requestedFrom tells the function if the load request came from the landing page or nextBlog btn
 const fetchBlogPost = (id, requestedFrom = "landingPage") => {
-  if (fileNames[id] == undefined) {
+  if (fileNames[id] === undefined) {
     console.log("undefined");
+    // eslint-disable-next-line no-param-reassign
     id = 0;
-    if (requestedFrom == "landingPage") return;
+    if (requestedFrom === "landingPage") return;
   }
 
   fetch(fileNames[id])
@@ -98,21 +104,15 @@ nextBlog.addEventListener("click", () => {
   }
 });
 
-const main = document.querySelector("main");
 const initializeLandingPage = () => {
   main.innerHTML = `<div id="landingpage-container">
   <div class="container"></div>
   </div>`;
 };
-const clear = (element) => {
-  while (element.lastChild) {
-    element.lastChild.remove();
-  }
-};
 
 const appendLangingPost = (post, container) => {
   const wrapper = document.createElement("div");
-  wrapper.classList.add(`wrapper`);
+  wrapper.classList.add("wrapper");
   wrapper.classList.add(`${post.type}`);
   container.classList.add(`${post.type}`);
   wrapper.dataset.id = `${post.id}`;
@@ -136,10 +136,7 @@ const createLandingPage = (post) => {
     appendLangingPost(post, lastChild);
   }
   // check if only child has a type small and
-  else if (
-    lastChild.firstElementChild.dataset.type == "small" &&
-    post.type == "small"
-  ) {
+  else if (lastChild.firstElementChild.dataset.type === "small" && post.type === "small") {
     appendLangingPost(post, lastChild);
     const newContainer = document.createElement("div");
     newContainer.classList.add("container");
@@ -154,7 +151,7 @@ const createLandingPage = (post) => {
   }
 };
 
-//Dynamic sizing functionality
+// Dynamic sizing functionality
 const generateRandomHeight = (floor, ceiling, maxHeight) => {
   const min = floor * maxHeight;
   const max = ceiling * maxHeight;
@@ -168,7 +165,7 @@ const loadDynamicHeight = () => {
     const maxHeight = container.clientHeight;
     if (container.children.length > 1) {
       const children = container.childNodes;
-      const randomHeight = generateRandomHeight(0.4, 0.6, maxHeight);
+      const randomHeight = generateRandomHeight(0.35, 0.65, maxHeight);
       children[0].style.height = `${randomHeight}px`;
       // allocate remaining space to the second child
       children[1].style.height = `${maxHeight - randomHeight}px`;
@@ -189,8 +186,8 @@ const loadLangingPage = () => {
     fileNames.map((fileName) =>
       fetch(fileName)
         .then((response) => response.json())
-        .then((result) => createLandingPage(result))
-    )
+        .then((result) => createLandingPage(result)),
+    ),
   )
     .then(() => {
       console.log("All post displayed!");
@@ -201,6 +198,6 @@ const loadLangingPage = () => {
     });
 };
 loadLangingPage();
-title.addEventListener("click", () => {
+pageTitle.addEventListener("click", () => {
   loadLangingPage();
 });
