@@ -52,6 +52,7 @@ const createBlogPost = (post) => {
   <p class="date blog">${post.date}</p>
   </div>
   <div id="blog-content-container">
+  <img id="blog-image" src=${post.image}></img>
   <p id="blog-content">${post.content}</p>
   </div>
   </div>
