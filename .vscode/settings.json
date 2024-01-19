@@ -2,7 +2,7 @@
   // enable globally (here: format on save)
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   // enable per-language (here: Prettier as formatter)
   "[javascript]": {

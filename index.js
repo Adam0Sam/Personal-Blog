@@ -97,12 +97,13 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
 };
 
 // create functioning "next blog" button
-nextBlog.addEventListener("click", () => {
+const handleNextBlogClick = () => {
   if (!isTransitioning) {
     const currentId = document.querySelector("#blog-container").dataset.id;
     fetchBlogPost(+currentId + 1, "nextBlog");
   }
-});
+};
+nextBlog.addEventListener("click", handleNextBlogClick);
 
 const initializeLandingPage = () => {
   main.innerHTML = `<div id="landingpage-container">
@@ -118,13 +119,25 @@ const appendLangingPost = (post, container) => {
   wrapper.dataset.id = `${post.id}`;
   wrapper.dataset.type = post.type;
   wrapper.addEventListener("click", () => fetchBlogPost(+wrapper.dataset.id));
-  wrapper.innerHTML = `
-  <h2 class="blog-header">${post.title}</h2>
-  <p class="blog-subheader">${post.content}</p>
-  <div class="details">
-  <p class="activity">${post.activity}</p>
-  <p class="date">${post.date}</p>
-  </div>`;
+
+  if (post.type === "big") {
+    wrapper.innerHTML = `
+    <h2 class="blog-header">${post.title}</h2>
+    <img class="blog-header-image" src=${post.image}></img>
+    <p class="blog-subheader">${post.content}</p>
+    <div class="details">
+    <p class="activity">${post.activity}</p>
+    <p class="date">${post.date}</p>
+    </div>`;
+  } else {
+    wrapper.innerHTML = `
+    <h2 class="blog-header">${post.title}</h2>
+    <p class="blog-subheader">${post.content}</p>
+    <div class="details">
+    <p class="activity">${post.activity}</p>
+    <p class="date">${post.date}</p>
+    </div>`;
+  }
   container.appendChild(wrapper);
 };
 
@@ -177,10 +190,27 @@ const loadDynamicHeight = () => {
   });
 };
 
+const removeBlogParameter = (param) => {
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams(url.search);
+  params.delete(param);
+  url.search = params.toString();
+  window.history.replaceState({}, document.title, url.href);
+};
+
 const loadLangingPage = () => {
+  isTransitioning = false;
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("blog")) {
+    const id = urlParams.get("blog");
+    if (fileNames[id] !== undefined) {
+      fetchBlogPost(id, "landingPage");
+      removeBlogParameter("blog");
+      return;
+    }
+  }
   initializeLandingPage();
   nextBlog.classList.remove("active");
-  isTransitioning = false;
   // wrap all filenames into a promise array
   Promise.all(
     fileNames.map((fileName) =>
@@ -197,7 +227,9 @@ const loadLangingPage = () => {
       console.log("Error occured while loading posts: ", error);
     });
 };
-loadLangingPage();
+
 pageTitle.addEventListener("click", () => {
   loadLangingPage();
 });
+
+document.addEventListener("DOMContentLoaded", loadLangingPage);

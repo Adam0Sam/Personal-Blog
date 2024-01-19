@@ -34,10 +34,12 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
+
 h2,
 p {
   margin: 0;
 }
+
 /* Default scheme - light */
 body {
   font-family: Poppins;
@@ -49,10 +51,12 @@ body {
   background-color: var(--light-scheme-background);
   --text-color: var(--light-scheme-text);
 }
+
 body.dark-scheme {
   background-color: var(--dark-scheme-background);
   --text-color: var(--dark-scheme-text);
 }
+
 header {
   position: relative;
   left: 0;
@@ -64,22 +68,27 @@ header {
   margin-right: 8%;
   margin-top: 30px;
 }
+
 main {
   position: relative;
 }
+
 #title {
   color: var(--accent-color);
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
 }
+
 #title:hover,
 #title:focus {
   color: var(--text-color);
 }
+
 #title:active {
   transform: scale(1.03);
 }
+
 #scheme {
   position: relative;
   transition: 0.5s;
@@ -89,6 +98,7 @@ main {
   background-color: var(--dark-scheme-background);
   cursor: pointer;
 }
+
 #scheme.dark-scheme {
   background-color: var(--light-scheme-background);
 }
@@ -120,6 +130,7 @@ main {
   margin-left: 8%;
   display: flex;
 }
+
 .container {
   min-width: var(--container-min-w);
   max-width: var(--container-max-w);
@@ -127,10 +138,12 @@ main {
   border-right: var(--container-border);
   padding: 0 15px;
 }
+
 .container.big {
   min-width: calc(var(--container-min-w) + 40px);
   max-width: calc(var(--container-max-w) + 40px);
 }
+
 .wrapper {
   box-sizing: border-box;
   display: flex;
@@ -140,19 +153,28 @@ main {
   padding-bottom: 15px;
   border-bottom: var(--container-border);
   cursor: pointer;
+  gap: 10px;
 }
+
 .wrapper:hover,
 .wrapper:focus {
   transform: scale(1.02);
 }
+
 .blog-header {
   /* text-align: center; */
   color: var(--text-color);
-  font-family: "Times New Roman", Times, serif;
   font-size: 23px;
   font-weight: 700;
   /* line-height: 2.5ch; */
 }
+
+.blog-header-image {
+  box-sizing: border-box;
+  height: fit-content;
+  border-radius: 4px;
+}
+
 .blog-subheader {
   text-align: justify;
   color: var(--text-color);
@@ -163,6 +185,7 @@ main {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
 .wrapper.big .blog-subheader {
   -webkit-line-clamp: 6;
 }
@@ -172,15 +195,18 @@ main {
   font-size: 14px;
   font-weight: 600;
 }
-.activity.blog{
+
+.activity.blog {
   font-size: 20px;
 }
+
 .date {
   color: var(--text-color);
   font-size: 12px;
   font-weight: 400;
 }
-.date.blog{
+
+.date.blog {
   font-size: 18px;
 }
 
@@ -190,12 +216,14 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
+
 #thankyou {
   color: var(--text-color);
   font-size: 12px;
   font-weight: 600;
 }
-#thankyou > span {
+
+#thankyou>span {
   color: var(--accent-color);
 }
 
@@ -205,6 +233,7 @@ footer {
   font-size: 12px;
   text-decoration: none;
 }
+
 #mail:focus,
 #mail:hover {
   text-decoration: underline;
@@ -218,13 +247,16 @@ footer {
   transform: translateX(100vw);
   transition: transform 1s;
 }
+
 #blog-container.center {
   transform: translateX(0);
 }
+
 #blog-container.move-left {
   position: fixed;
   transform: translateX(-100vw);
 }
+
 #blog-title {
   text-align: center;
   color: var(--text-color);
@@ -232,14 +264,17 @@ footer {
   font-weight: 700;
   margin-bottom: 35px;
 }
+
 #blog-details {
   text-align: center;
   margin-bottom: 40px;
 }
+
 #blog-content-container {
   margin: 0 auto;
   max-width: 650px;
 }
+
 #blog-content {
   color: var(--text-color);
   text-align: justify;
@@ -247,12 +282,14 @@ footer {
   font-weight: 400;
   margin-bottom: 60px;
 }
+
 #next-blog {
   all: unset;
   width: 110px;
   height: 35px;
   color: var(--text-color);
 }
+
 #next-blog {
   align-self: flex-end;
   display: none;
@@ -274,9 +311,11 @@ footer {
   margin-right: 8%;
   cursor: pointer;
 }
+
 #next-blog.dark-scheme {
   background-color: var(--dark-scheme-background);
 }
+
 #next-blog::before {
   content: "";
   position: absolute;
@@ -289,13 +328,16 @@ footer {
   border-radius: inherit;
   background: var(--linear-orange-blue);
 }
+
 #next-blog:hover,
 #next-blog:focus {
   color: #ee5626;
 }
+
 #next-blog:active {
   transform: scale(1.02);
 }
+
 #next-blog.active {
   display: flex;
 }
