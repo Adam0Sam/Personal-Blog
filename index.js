@@ -6,12 +6,30 @@ const pageTitle = document.getElementById("title");
 const main = document.querySelector("main");
 // variable meant to check if blog sliding is occuring
 let isTransitioning = true;
+
+// 9 2 a
+// 9 2 c
+// 9 3 c
+// 9 4 s
+// 10 1 a
+// 10 1 c
+// 10 1 s
+// 10 2 c
+// 10 2 s
+// 10 3 c
+
 const fileNames = [
   "./blogs/9-2-c.json",
   "./blogs/9-2-a.json",
   "./blogs/9-3-c.json",
   "./blogs/9-3-s.json",
   "./blogs/9-4-s.json",
+  "./blogs/10-1-a.json",
+  "./blogs/10-1-c.json",
+  "./blogs/10-1-s.json",
+  "./blogs/10-2-c.json",
+  "./blogs/10-2-s.json",
+  "./blogs/10-3-c.json",
 ];
 
 const clear = (element) => {
@@ -97,6 +115,7 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
   console.log(id);
 };
 
+// event listeners
 // create functioning "next blog" button
 const handleNextBlogClick = () => {
   if (!isTransitioning) {
@@ -104,10 +123,11 @@ const handleNextBlogClick = () => {
     fetchBlogPost(+currentId + 1, "nextBlog");
   }
 };
+
 nextBlog.addEventListener("click", handleNextBlogClick);
 
 const initializeLandingPage = () => {
-  main.innerHTML = `<div id="landingpage-container">
+  main.innerHTML = `<div id="landingpage-container" onwheel="handleWheel(event)">
   <div class="container"></div>
   </div>`;
 };
