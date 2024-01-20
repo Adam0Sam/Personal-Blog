@@ -81,9 +81,11 @@ const createBlogPost = (post) => {
 
 const loadBlogPost = (post, requestedFrom) => {
   const nextContainer = createBlogPost(post);
+  console.log("loading blog post...");
   nextBlog.classList.add("active");
+  isTransitioning = true;
   if (requestedFrom === "nextBlog") {
-    isTransitioning = true;
+    console.log(isTransitioning);
     const previousContainer = document.querySelector("#blog-container");
     previousContainer.classList.add("move-left");
     slideIn(nextContainer);
@@ -93,11 +95,20 @@ const loadBlogPost = (post, requestedFrom) => {
     });
     nextContainer.addEventListener("transitionend", () => {
       isTransitioning = false;
+      // eslint-disable-next-line no-useless-return
+      return;
     });
-  } else {
-    clear(main);
-    slideIn(nextContainer);
+    // failsafe in case user clicks nextBlog btn too fast
+    setTimeout(() => {
+      isTransitioning = false;
+      if (main.children.length > 1) {
+        main.removeChild(main.lastChild);
+      }
+    }, 2000);
   }
+  clear(main);
+  slideIn(nextContainer);
+  isTransitioning = false;
 };
 
 // requestedFrom tells the function if the load request came from the landing page or nextBlog btn
