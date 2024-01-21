@@ -96,19 +96,13 @@ const loadBlogPost = (post, requestedFrom) => {
     nextContainer.addEventListener("transitionend", () => {
       isTransitioning = false;
       // eslint-disable-next-line no-useless-return
-      return;
     });
     // failsafe in case user clicks nextBlog btn too fast
-    setTimeout(() => {
-      isTransitioning = false;
-      if (main.children.length > 1) {
-        main.removeChild(main.lastChild);
-      }
-    }, 2000);
+  } else {
+    clear(main);
+    slideIn(nextContainer);
+    isTransitioning = false;
   }
-  clear(main);
-  slideIn(nextContainer);
-  isTransitioning = false;
 };
 
 // requestedFrom tells the function if the load request came from the landing page or nextBlog btn
