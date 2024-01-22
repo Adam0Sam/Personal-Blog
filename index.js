@@ -149,8 +149,12 @@ const appendLangingPost = (post, container) => {
   if (post.type === "big") {
     wrapper.innerHTML = `
     <h2 class="blog-header">${post.title}</h2>
+    <div class="blog-header-image-container">
     <img class="blog-header-image" src=${post.image}></img>
+    </div>
+    <div class="blog-subheader-container">
     <p class="blog-subheader">${post.content}</p>
+    </div>
     <div class="details">
     <p class="activity">${post.activity}</p>
     <p class="date">${post.date}</p>
@@ -158,7 +162,9 @@ const appendLangingPost = (post, container) => {
   } else {
     wrapper.innerHTML = `
     <h2 class="blog-header">${post.title}</h2>
+    <div class="blog-header-image-container">
     <p class="blog-subheader">${post.content}</p>
+    </div>
     <div class="details">
     <p class="activity">${post.activity}</p>
     <p class="date">${post.date}</p>
