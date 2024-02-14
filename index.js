@@ -4,6 +4,8 @@ const scheme = document.getElementById("scheme");
 const nextBlog = document.getElementById("next-blog");
 const pageTitle = document.getElementById("title");
 const main = document.querySelector("main");
+const selectSemester = document.querySelector(".select");
+const selectedSemesterValue = +selectSemester.value || 1;
 // variable meant to check if blog sliding is occuring
 let isTransitioning = true;
 
@@ -43,11 +45,13 @@ if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").match
   body.classList.add("dark-scheme");
   scheme.classList.add("dark-scheme");
   nextBlog.classList.add("dark-scheme");
+  selectSemester.firstElementChild.classList.add("dark-scheme");
 }
 scheme.addEventListener("click", () => {
   body.classList.toggle("dark-scheme");
   scheme.classList.toggle("dark-scheme");
   nextBlog.classList.toggle("dark-scheme");
+  selectSemester.firstElementChild.classList.toggle("dark-scheme");
 });
 
 const slideIn = (container) => {
@@ -107,6 +111,8 @@ const loadBlogPost = (post, requestedFrom) => {
 
 // requestedFrom tells the function if the load request came from the landing page or nextBlog btn
 const fetchBlogPost = (id, requestedFrom = "landingPage") => {
+  selectSemester.classList.remove("active");
+
   if (fileNames[id] === undefined) {
     console.log("undefined");
     // eslint-disable-next-line no-param-reassign
@@ -120,21 +126,11 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
   console.log(id);
 };
 
-// event listeners
-// create functioning "next blog" button
-const handleNextBlogClick = () => {
-  if (!isTransitioning) {
-    const currentId = document.querySelector("#blog-container").dataset.id;
-    fetchBlogPost(+currentId + 1, "nextBlog");
-  }
-};
-
-nextBlog.addEventListener("click", handleNextBlogClick);
-
 const initializeLandingPage = () => {
   main.innerHTML = `<div id="landingpage-container" onwheel="handleWheel(event)">
   <div class="container"></div>
   </div>`;
+  selectSemester.classList.add("active");
 };
 
 const appendLangingPost = (post, container) => {
@@ -206,6 +202,7 @@ const generateRandomHeight = (floor, ceiling, maxHeight) => {
 
 const loadDynamicHeight = () => {
   const containers = document.querySelectorAll(".container");
+  if (containers.length === 0 || containers[0].children.length === 0) return;
   containers.forEach((container) => {
     const maxHeight = container.clientHeight;
     if (container.children.length > 1) {
@@ -230,7 +227,8 @@ const removeBlogParameter = (param) => {
   window.history.replaceState({}, document.title, url.href);
 };
 
-const loadLangingPage = () => {
+const loadLangingPage = (passedSemesterValue) => {
+  let semesterValue = passedSemesterValue;
   isTransitioning = false;
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has("blog")) {
@@ -241,6 +239,13 @@ const loadLangingPage = () => {
       return;
     }
   }
+  if (urlParams.has("semester")) {
+    semesterValue = +urlParams.get("semester");
+    selectSemester.firstElementChild.value = semesterValue;
+    removeBlogParameter("semester");
+  } else {
+    selectSemester.firstElementChild.value = semesterValue;
+  }
   initializeLandingPage();
   nextBlog.classList.remove("active");
   // wrap all filenames into a promise array
@@ -248,7 +253,7 @@ const loadLangingPage = () => {
     fileNames.map((fileName) =>
       fetch(fileName)
         .then((response) => response.json())
-        .then((result) => createLandingPage(result)),
+        .then((result) => (result?.semester === semesterValue ? createLandingPage(result) : null)),
     ),
   )
     .then(() => {
@@ -261,7 +266,25 @@ const loadLangingPage = () => {
 };
 
 pageTitle.addEventListener("click", () => {
-  loadLangingPage();
+  loadLangingPage(selectedSemesterValue);
 });
 
-document.addEventListener("DOMContentLoaded", loadLangingPage);
+document.addEventListener("DOMContentLoaded", () => loadLangingPage(selectedSemesterValue));
+
+// event listeners
+// create functioning "next blog" button
+const handleNextBlogClick = () => {
+  if (!isTransitioning) {
+    const currentId = document.querySelector("#blog-container").dataset.id;
+    fetchBlogPost(+currentId + 1, "nextBlog");
+  }
+};
+
+nextBlog.addEventListener("click", handleNextBlogClick);
+
+const handleSemesterChange = () => {
+  const semesterValue = +selectSemester.firstElementChild.value;
+  loadLangingPage(semesterValue);
+};
+
+selectSemester.addEventListener("change", handleSemesterChange);

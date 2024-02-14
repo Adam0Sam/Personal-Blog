@@ -1,6 +1,8 @@
 :root {
   --light-scheme-background: #f9f4ec;
+  --light-darker-scheme-background: #b7b2aa;
   --dark-scheme-background: #201f1f;
+  --dark-lighter-scheme-background: #3a3a3a;
   --light-scheme-text: #201f1f;
   --dark-scheme-text: #f5f5f5;
 
@@ -368,4 +370,68 @@ footer {
 
 #next-blog.active {
   display: flex;
+}
+
+/* selection box */
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 10px red;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: var(--dark-scheme-text);
+  background-color: var(--dark-scheme-background);
+  background-image: none;
+  cursor: pointer;
+  transition: 0.5s;
+
+}
+
+select.dark-scheme {
+  background-color: var(--light-scheme-background);
+  color: var(--light-scheme-text);
+}
+
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: none;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+  flex-grow: 1;
+  max-width: 20rem;
+}
+
+.select.active {
+  display: flex;
+}
+
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: var(--dark-lighter-scheme-background);
+  transition: .25s all ease;
+  pointer-events: none;
+}
+
+.select.dark-scheme::after {
+  background-color: var(--light-darker-scheme-background);
+}
+
+/* Transition */
+.select:hover::after {
+  color: var(--accent-color);
 }
