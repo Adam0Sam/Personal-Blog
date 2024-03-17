@@ -19,6 +19,7 @@ let isTransitioning = true;
 // 10 2 c
 // 10 2 s
 // 10 3 c
+// 11 1 c
 
 const fileNames = [
   "./blogs/9-2-c.json",
@@ -32,6 +33,7 @@ const fileNames = [
   "./blogs/10-2-c.json",
   "./blogs/10-2-s.json",
   "./blogs/10-3-c.json",
+  "./blogs/11-1-c.json",
 ];
 
 const clear = (element) => {

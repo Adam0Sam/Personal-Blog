@@ -1,0 +1,10 @@
+{
+    "type": "big",
+    "title": "Creating robot functionality with Java for the First Tech Challenge",
+    "content": "the autonomous path tracing algorithm—a complex labyrinth of code and logic that promised to propel our robotics team to new heights. But here's the twist: it was the hardest thing I've ever done. The journey was fraught with challenges, each line of code a reminder of my own limitations and the vast expanse of what I had yet to learn.Uncertainty became my constant companion. As I navigated the intricacies of Java, I couldn't shake the feeling of being adrift in a sea of code, unsure if I truly grasped the concepts I was working with. The path tracing algorithm loomed like a mountain on the horizon, daunting yet irresistible in its promise of automation and efficiency.But here's the beauty of it all: uncertainty didn't deter us; it fueled our determination. Together with my robotics team, we faced the challenges head-on, dissecting the code, experimenting with different approaches, and learning from our failures as much as our successes. It was a journey of growth, where every obstacle became an opportunity for discovery.",
+    "image": "./images/auto.png",
+    "date": "December Week 1, 2023",
+    "activity": "Creativity",
+    "semester": 1,
+    "id": 13
+}

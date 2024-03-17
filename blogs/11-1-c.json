@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Using Cascading Stylesheets to bring vibrance to my Blog Webpage",
+    "content": "Let's paint a picture of CSS's simplicity with a splash of magic. With just a few lines of code, I can transform the bland canvas of my webpage into a masterpiece of design. Take, for example, the humble background color property. With a simple declaration like \"background-color: #FF5733;\", I can breathe life into my webpage, infusing it with vibrant hues that captivate the eye.But here's where the real wizardry of CSS comes into play. Beyond the surface-level simplicity lies a treasure trove of functions with powerful algorithms under the hood. Consider the \"box-shadow\" property, for instance. With its ability to cast shadows around elements, it adds depth and dimension to my webpage, creating visual interest with just a flick of the CSS wand.And let's not forget about the transformative power of CSS animations. With properties like \"transform\" and \"transition\", I can bring my webpage to life with fluid movements and transitions that engage and delight the user. It's like choreographing a digital ballet, where each element dances in harmony with the rhythm of the webpage.",
+    "image": "./images/css.png",
+    "date": "November Week 1, 2023",
+    "activity": "Creativity",
+    "semester": 1,
+    "id": 11
+}

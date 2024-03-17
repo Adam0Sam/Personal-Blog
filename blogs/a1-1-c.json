@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Manipulating the Document Object Model to create a responsive Webpage",
+    "content": "Navigating the Document Object Model (DOM) is akin to wielding a painter's brush, where HTML lays the foundation, CSS adds the colors, and JavaScript breathes life into the canvas. Each tool plays a distinct yet interconnected role in the creation of immersive digital experiences.Yet, this journey wasn't without its challenges. As I delved deeper into the intricacies of web development, I encountered roadblocks and moments of frustration. But through perseverance and a relentless pursuit of knowledge, I emerged with a newfound confidence in my ability to harness the power of HTML, CSS, and JavaScript.Now, armed with this trio of tools, I can confidently say that I possess the skills to create modern websites that not only look stunning but also function seamlessly across devices. It's a testament to the power of continuous learning and the transformative impact of mastering foundational web development technologies.",
+    "image": "./images/dom.png",
+    "date": "January Week 1, 2024",
+    "activity": "Creativity",
+    "semester": 1,
+    "id": 15
+}
