@@ -20,6 +20,15 @@ let isTransitioning = true;
 // 10 2 s
 // 10 3 c
 // 11 1 c
+// 11 2 s
+// 12 1 c
+// 12 1 s
+// a1 1 c
+// a1 1 s
+// a2 1 c
+// a2 1 s
+// a2 4 s
+// a3 1 c
 
 const fileNames = [
   "./blogs/9-2-c.json",
@@ -34,6 +43,15 @@ const fileNames = [
   "./blogs/10-2-s.json",
   "./blogs/10-3-c.json",
   "./blogs/11-1-c.json",
+  "./blogs/11-2-s.json",
+  "./blogs/12-1-c.json",
+  "./blogs/12-1-s.json",
+  "./blogs/a1-1-c.json",
+  "./blogs/a1-1-s.json",
+  "./blogs/a2-1-c.json",
+  "./blogs/a2-1-s.json",
+  "./blogs/a2-4-s.json",
+  "./blogs/a3-1-c.json",
 ];
 
 const clear = (element) => {
@@ -229,7 +247,7 @@ const removeBlogParameter = (param) => {
   window.history.replaceState({}, document.title, url.href);
 };
 
-const loadLangingPage = (passedSemesterValue) => {
+const loadLangingPage = async (passedSemesterValue) => {
   let semesterValue = passedSemesterValue;
   isTransitioning = false;
   const urlParams = new URLSearchParams(window.location.search);
@@ -251,20 +269,29 @@ const loadLangingPage = (passedSemesterValue) => {
   initializeLandingPage();
   nextBlog.classList.remove("active");
   // wrap all filenames into a promise array
-  Promise.all(
-    fileNames.map((fileName) =>
-      fetch(fileName)
-        .then((response) => response.json())
-        .then((result) => (result?.semester === semesterValue ? createLandingPage(result) : null)),
-    ),
-  )
-    .then(() => {
-      console.log("All post displayed!");
-      loadDynamicHeight();
-    })
-    .catch((error) => {
-      console.log("Error occured while loading posts: ", error);
-    });
+
+  for(let fileName of fileNames){
+    const response = await fetch(fileName);
+    const blog = await response.json();
+    blog?.semester === semesterValue ? createLandingPage(blog) : null;
+  }
+
+  loadDynamicHeight();
+
+  // Promise.all(
+  //   fileNames.map((fileName) =>
+  //     fetch(fileName)
+  //       .then((response) => response.json())
+  //       .then((result) => (result?.semester === semesterValue ? createLandingPage(result) : null)),
+  //   ),
+  // )
+  //   .then(() => {
+  //     console.log("All post displayed!");
+  //     loadDynamicHeight();
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error occured while loading posts: ", error);
+  //   });
 };
 
 pageTitle.addEventListener("click", () => {

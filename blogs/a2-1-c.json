@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Creating the Frontend with React for the school’s ‘Hundred days’ event",
+    "content": "Creating the frontend for our school’s ‘Hundred Days’ event using React has been incredibly rewarding. Finally applying my web development skills to a project my peers will enjoy feels amazing.React’s component-based architecture made the development process smoother and more intuitive compared to using vanilla JavaScript. Building a dynamic, responsive site for the event was not only fun but also a great learning experience.Seeing the website come together and knowing it will enhance the event for everyone is immensely satisfying. This project has solidified my understanding of React and reminded me why I love web development: creating meaningful, engaging digital experiences for my community.",
+    "image": "./images/simt-react.png",
+    "date": "February Week 1, 2024",
+    "activity": "Creativity",
+    "semester": 2,
+    "id": 17
+}

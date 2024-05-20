@@ -1,10 +1,10 @@
 {
     "type": "small",
-    "title": "Manipulating the Document Object Model to create a responsive Webpage",
-    "content": "Navigating the Document Object Model (DOM) is akin to wielding a painter's brush, where HTML lays the foundation, CSS adds the colors, and JavaScript breathes life into the canvas. Each tool plays a distinct yet interconnected role in the creation of immersive digital experiences.Yet, this journey wasn't without its challenges. As I delved deeper into the intricacies of web development, I encountered roadblocks and moments of frustration. But through perseverance and a relentless pursuit of knowledge, I emerged with a newfound confidence in my ability to harness the power of HTML, CSS, and JavaScript.Now, armed with this trio of tools, I can confidently say that I possess the skills to create modern websites that not only look stunning but also function seamlessly across devices. It's a testament to the power of continuous learning and the transformative impact of mastering foundational web development technologies.",
+    "title": "Helping a fellow school-mate understand the complex realm of mathematics",
+    "content": "Helping a friend understand the complex plane, particularly the Argand diagram, turned out to be an enlightening experience for both of us. As I guided them through the intricacies of representing complex numbers visually, I realized that teaching is a powerful tool for deepening one's own understanding.Breaking down the concept into simpler parts, I started with the basics: how every complex number corresponds to a point on the plane, where the x-axis represents the real part and the y-axis represents the imaginary part. We explored how addition and multiplication of complex numbers translate geometrically, creating a visual intuition for operations that initially seem abstract.What surprised me was how much I learned in the process. Explaining the geometric interpretation of multiplication, for instance—how multiplying two complex numbers results in rotating and scaling on the plane—clarified nuances I hadn’t fully grasped before. Each question my friend asked pushed me to think more deeply and articulate more clearly, reinforcing my own knowledge.This shared learning journey highlighted the reciprocal nature of teaching. By helping my friend navigate the complex plane, I not only facilitated their understanding but also strengthened my own grasp of the subject. It's a reminder that sometimes, the best way to learn is to teach, turning a complex topic into a shared adventure of discovery.",
     "image": "./images/dom.png",
     "date": "January Week 1, 2024",
-    "activity": "Creativity",
+    "activity": "Service",
     "semester": 1,
-    "id": 15
+    "id": 16
 }

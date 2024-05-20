@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Creating the Backend with NodeJS for the school’s ‘Hundred days’ event",
+    "content": "As we delve into creating the backend for our school’s ‘Hundred Days’ event using NodeJS, it’s an exhilarating journey into uncharted territory. While I’m no stranger to web development, this is my first foray into writing extensive backend code—a challenge I wholeheartedly embrace.The ‘Hundred Days’ event isn’t just about frontend aesthetics or fundraising efforts; it’s about leveraging technology to enhance the experience for our school community. With NodeJS, I have the opportunity to craft a robust backend infrastructure that powers seamless interactions and data management for the event.Navigating the intricacies of NodeJS is a learning curve, but it’s a welcome challenge that pushes me to expand my skill set. From setting up APIs to handling database queries, every line of code I write brings me closer to realizing the vision of a dynamic and responsive event platform.As I tackle this new frontier in backend development, I’m reminded of the importance of pushing boundaries and embracing growth. The ‘Hundred Days’ event serves as a catalyst for innovation and creativity, and by building the backend with NodeJS, I’m contributing to its success in a meaningful way.",
+    "image": "./images/simt-back.png",
+    "date": "March Week 1, 2024",
+    "activity": "Creativity",
+    "semester": 2,
+    "id": 20
+}
