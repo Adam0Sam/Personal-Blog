@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Preparing for FTC robotics world championship",
+    "content": "Preparing for the FTC Robotics World Championship was a race against time. Our hardware team encountered unexpected delays, leaving us with just one week to write functional code for the robot. The pressure was intense, and every moment counted.Having a friend who stepped up to help was a game-changer. We divided the workload, which significantly improved our efficiency. While I focused on writing the control algorithms, my friend tackled the sensor integrations and testing routines. This separation of concerns allowed us to work in parallel, maximizing our productivity in the limited time available.Working together also made the experience more enjoyable. We could bounce ideas off each other, troubleshoot issues faster, and keep morale high despite the long hours. The collaboration not only enhanced the quality of our code but also turned a stressful situation into a memorable and rewarding challenge.In the end, our robot was ready for the competition. The intense preparation taught us the value of teamwork and effective time management. Despite the initial setbacks, the experience underscored the importance of collaboration in overcoming challenges and achieving success.",
+    "image": "./images/ftc-worlds.bmp",
+    "date": "April Week 1, 2024",
+    "activity": "Creativity",
+    "semester": 2,
+    "id": 23
+}

@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Creating an informational webpage for the international Bebras organization",
+    "content": "Creating an informational webpage for the international Bebras organization was a significant task, given the organization's global reach in promoting computational thinking contests across over 100 countries. The scope and impact of this project were clear, adding a layer of responsibility to ensure the webpage met international standards.One of the biggest challenges was communication with the end-users. They often weren't sure what they wanted, making it difficult to nail down precise requirements. This uncertainty required constant adjustments and a flexible approach to development, which sometimes felt like shooting at a moving target.Reflecting on the process, I realize that using a React SPA application was likely overkill for this relatively simple project. While React is powerful for dynamic, interactive applications, a more straightforward solution could have been more efficient and easier to maintain.Despite the challenges, the experience was invaluable. It taught me the importance of clear communication and adaptability in web development. It also highlighted the need to choose the right tools for the job, balancing functionality with simplicity.",
+    "image": "./images/bebras.png",
+    "date": "April Week 1, 2024",
+    "activity": "Service",
+    "semester": 2,
+    "id": 24
+}
