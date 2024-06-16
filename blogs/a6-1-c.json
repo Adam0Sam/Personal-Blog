@@ -1,0 +1,10 @@
+{
+    "type": "big",
+    "title": "Building and controlling simple electrical circuits with Raspberry PI and STM32F microcontrollers",
+    "content": "Most of my programming work feels quite abstract, often detached from the tangible world. My active participation in robotics inspired me to dive deeper into the practical side of electronics and CPUs. This motivation led me to embark on mini projects using Raspberry Pi and STM32F microcontrollers, aiming to bridge the gap between theoretical knowledge and real-world applications.Raspberry Pi, with its support for MicroPython, proved to be an excellent starting point. Its user-friendly nature made it easier to set up simple circuits, control LEDs, and read sensor data. This hands-on experience brought immediate satisfaction and a sense of accomplishment, making complex concepts more accessible.However, my ultimate goal was to gain a deeper understanding of how to manipulate memory and execute functions at a low level. This is where the STM32F microcontroller came into play. Programming the STM32F with embedded C presented a steeper learning curve, but it offered invaluable insights into the inner workings of CPUs and electronics. Unlike the higher-level abstraction provided by the Raspberry Pi, the STM32F required a more granular approach, emphasizing efficiency and precision.Through these projects, I've not only enhanced my technical skills but also developed a more profound appreciation for the intricacies of embedded systems. The journey from Raspberry Pi to STM32F has been challenging yet rewarding, providing a comprehensive understanding that blends both software and hardware perspectives.",
+    "image": "./images/micro.png",
+    "date": "June Week 1, 2024",
+    "activity": "Creativity",
+    "semester": 2,
+    "id": 27
+}

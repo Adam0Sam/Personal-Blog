@@ -29,6 +29,16 @@ let isTransitioning = true;
 // a2 1 s
 // a2 4 s
 // a3 1 c
+// a3 1 s
+// a3 3 s 
+// a4 1 c 
+// a4 1 s 
+// a5 1 c 
+// a5 1 s 
+// a6 1 c 
+// a6 1 s
+
+
 
 const fileNames = [
   "./blogs/9-2-c.json",
@@ -52,6 +62,14 @@ const fileNames = [
   "./blogs/a2-1-s.json",
   "./blogs/a2-4-s.json",
   "./blogs/a3-1-c.json",
+  "./blogs/a3-1-s.json",
+  "./blogs/a3-3-s.json",
+  "./blogs/a4-1-c.json",
+  "./blogs/a4-1-s.json",
+  "./blogs/a5-1-c.json",
+  "./blogs/a5-1-s.json",
+  "./blogs/a6-1-c.json",
+  "./blogs/a6-1-s.json",
 ];
 
 const clear = (element) => {

@@ -1,0 +1,10 @@
+{
+    "type": "small",
+    "title": "Enabling content creators and teachers to interact with the Bebras’ organization webpage via the Strapi content management system",
+    "content": "Enabling content creators and teachers to interact with the Bebras organization webpage via the Strapi content management system has been the second phase of my collaboration with the Bebras community. Recognizing the diverse group of participants involved in this project, I needed to choose a CMS that catered to everyone's needs while remaining flexible enough for future developers to modify the website.Selecting Strapi.js seemed like the perfect solution. It offered the dynamic capabilities we needed and an intuitive interface for content creators and teachers. The challenge, however, lay in setting it up on Bebras' servers. The process was more complex than anticipated, with several unexpected hurdles along the way.Despite these difficulties, the effort was worth it. Strapi's flexibility allowed us to create a user-friendly platform that could be easily updated and managed by non-developers. This not only streamlined content creation but also ensured the website could evolve with the needs of the Bebras community.In the end, implementing Strapi.js has proven to be a valuable decision. It has empowered content creators and educators to engage more effectively with the Bebras website, enhancing the overall user experience and supporting the organization’s mission to promote computational thinking globally.",
+    "image": "./images/strapi.png",
+    "date": "May Week 1, 2024",
+    "activity": "Service",
+    "semester": 2,
+    "id": 26
+}
