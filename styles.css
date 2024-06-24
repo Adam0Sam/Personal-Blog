@@ -69,6 +69,8 @@ header {
   margin-left: 8%;
   margin-right: 8%;
   margin-top: 30px;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 main {
@@ -434,4 +436,14 @@ select::-ms-expand {
 /* Transition */
 .select:hover::after {
   color: var(--accent-color);
+}
+
+@media screen and (max-width: 800px) {
+  #blog-title {
+    font-size: 36px;
+  }
+
+  #blog-container {
+    width: 80%;
+  }
 }
