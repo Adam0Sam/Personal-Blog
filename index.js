@@ -30,15 +30,13 @@ let isTransitioning = true;
 // a2 4 s
 // a3 1 c
 // a3 1 s
-// a3 3 s 
-// a4 1 c 
-// a4 1 s 
-// a5 1 c 
-// a5 1 s 
-// a6 1 c 
+// a3 3 s
+// a4 1 c
+// a4 1 s
+// a5 1 c
+// a5 1 s
+// a6 1 c
 // a6 1 s
-
-
 
 const fileNames = [
   "./blogs/9-2-c.json",
@@ -165,7 +163,7 @@ const fetchBlogPost = (id, requestedFrom = "landingPage") => {
 };
 
 const initializeLandingPage = () => {
-  main.innerHTML = `<div id="landingpage-container" onwheel="handleWheel(event)">
+  main.innerHTML = `<div id="landingpage-container">
   <div class="container"></div>
   </div>`;
   selectSemester.classList.add("active");
@@ -288,7 +286,7 @@ const loadLangingPage = async (passedSemesterValue) => {
   nextBlog.classList.remove("active");
   // wrap all filenames into a promise array
 
-  for(let fileName of fileNames){
+  for (const fileName of fileNames) {
     const response = await fetch(fileName);
     const blog = await response.json();
     blog?.semester === semesterValue ? createLandingPage(blog) : null;
